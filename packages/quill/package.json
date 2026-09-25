@@ -1,6 +1,6 @@
 {
-  "name": "quill",
-  "version": "2.0.3",
+  "name": "@adremsoft/quill",
+  "version": "2.0.3-adrem-1",
   "description": "Your powerful, rich text editor",
   "author": "Jason Chen <jhchen7@gmail.com>",
   "homepage": "https://quilljs.com",
@@ -97,5 +97,8 @@
   "engines": {
     "npm": ">=8.2.3"
   },
-  "engineStrict": true
+  "engineStrict": true,
+  "publishConfig": {
+    "@adremsoft:registry": "https://npm.pkg.github.com"
+  }
 }
