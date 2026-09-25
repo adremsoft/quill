@@ -1260,7 +1260,11 @@ describe('Editor', () => {
       ).toEqual('<strong>123&nbsp;</strong>123<em>&nbsp;123</em>');
 
       expect(createEditor(new Delta().insert('1   2\n')).getHTML(0, 5)).toEqual(
-        '1&nbsp;&nbsp;&nbsp;2',
+        '1 &nbsp;&nbsp;2',
+      );
+
+      expect(createEditor(new Delta().insert('1 2 3\n')).getHTML(0, 5)).toEqual(
+        '1 2 3',
       );
 
       expect(

@@ -371,7 +371,12 @@ function convertHTML(
   }
   if (blot instanceof TextBlot) {
     const escapedText = escapeText(blot.value().slice(index, index + length));
-    return escapedText.replaceAll(' ', '&nbsp;');
+    // only use &nbsp; where HTML would otherwise collapse the whitespace
+    return escapedText.replace(/ +/g, (run, offset: number, text: string) =>
+      offset === 0 || offset + run.length === text.length
+        ? '&nbsp;'.repeat(run.length)
+        : ` ${'&nbsp;'.repeat(run.length - 1)}`,
+    );
   }
   if (blot instanceof ParentBlot) {
     // TODO fix API
