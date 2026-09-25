@@ -1,5 +1,5 @@
 import '../../../src/quill.js';
-import Delta from 'quill-delta';
+import Delta from '../../../src/delta/Delta.js';
 import { LeafBlot, Registry } from 'parchment';
 import {
   afterEach,

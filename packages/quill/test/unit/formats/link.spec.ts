@@ -1,4 +1,4 @@
-import Delta from 'quill-delta';
+import Delta from '../../../src/delta/Delta.js';
 import {
   createScroll as baseCreateScroll,
   createRegistry,
