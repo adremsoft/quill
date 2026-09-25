@@ -291,5 +291,19 @@ describe('Syntax', () => {
       const quill = createQuill();
       expect(quill.getSemanticHTML()).toContain('data-language="javascript"');
     });
+
+    test('escapes code language', () => {
+      const quill = createQuill();
+      quill.setContents(
+        new Delta()
+          .insert('var test = 1;')
+          .insert('\n', { 'code-block': '"><img src=x onerror=alert(1)>' }),
+      );
+      const html = quill.getSemanticHTML();
+      expect(html).toContain(
+        'data-language="&quot;&gt;&lt;img src=x onerror=alert(1)&gt;"',
+      );
+      expect(html).not.toContain('<img');
+    });
   });
 });
